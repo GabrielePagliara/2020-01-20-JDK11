@@ -1,5 +1,7 @@
 package it.polito.tdp.artsmia.model;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +49,16 @@ public class Model {
 	
 	public List<String> getRole() {
 		return dao.listAllRoles();
+	}
+
+	public List<LinkArtist> connectedArtist() {
+		List<LinkArtist> list = new ArrayList<>();
+		for(DefaultWeightedEdge e: this.grafo.edgeSet()) {
+			list.add(new LinkArtist(grafo.getEdgeSource(e), grafo.getEdgeTarget(e),(int) grafo.getEdgeWeight(e)));			
+		}
+		Collections.sort(list);
+		return list;
+		
 	}
 
 }

@@ -1,6 +1,6 @@
 package it.polito.tdp.artsmia.model;
 
-public class LinkArtist {
+public class LinkArtist implements Comparable<LinkArtist> {
 	
 	private Artist a1;
 	private Artist a2;
@@ -35,6 +35,17 @@ public class LinkArtist {
 
 	public void setPeso(Integer peso) {
 		this.peso = peso;
+	}
+
+
+	@Override
+	public int compareTo(LinkArtist o) {
+		return -(this.peso.compareTo(o.peso));
+	}
+
+	@Override
+	public String toString() {
+		return a1 + " " + a2 + " peso=" + peso + ";";
 	}
 	
 	
